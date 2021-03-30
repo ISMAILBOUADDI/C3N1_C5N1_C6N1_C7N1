@@ -10,34 +10,53 @@
 </head>
 <body>
 <div class="container">
-        <form class="form" onsubmit="return validation()" action="skill_handler.php"  method="post" >
+      <form class="form"  action='skill_handler.php' method='POST'>
             <h1 class="form__title">details about skills</h1>
-            <h3>select your level from 0 to 5 and put -1 if wax unknouwn</h3>
-            <div class="form__message form__message--error"></div>
+            <h3>select your level from 0 to 5 and put -1 if was unknouwn</h3>
+            <!-- <div class="form__message form__message--error"></div> -->
             <div class="form__input-group">
-                <input type="text" class="form__input" placeholder="html" name="html">
-                <div class="form__input-error-message"></div>
+                <input type="number" class="form__input" placeholder="html" name="html" onkeyup="this.value = minMaxvalidationFunc(this, this.value)" min="-1" max="5"/>
             </div>
-            <div class="form__message form__message--error"></div>
+            
             <div class="form__input-group">
-                <input type="text"  class="form__input"  placeholder="cgi"  name="cgi">
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="text" class="form__input"  placeholder="js"  name="js">
-                <div class="form__input-error-message"></div>
+                <input type="text"  class="form__input" placeholder="cgi"  name="cgi" onkeyup="this.value = minMaxvalidationFunc(this, this.value)" min="-1" max="5"/>
+                
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" placeholder= " ajax "  name="ajax">
-                <div class="form__input-error-message"></div>
+                <input type="text" class="form__input"  placeholder="js"  name="js"  onkeyup="this.value = minMaxvalidationFunc(this, this.value)" min="-1" max="5"/>
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input"  placeholder= "php"  name="php">
-                <div class="form__input-error-message"></div>
+                <input type="text" class="form__input" placeholder= " ajax "  name="ajax"  onkeyup="this.value = minMaxvalidationFunc(this, this.value)" min="-1" max="5"/>
             </div>
-            <button class="form__button" type="submit" namr="login">Continue</button>
+            <div class="form__input-group">
+                <input type="text" class="form__input"  placeholder= "php"  name="php"  onkeyup="this.value = minMaxvalidationFunc(this, this.value)" min="-1" max="5"/>
+            </div>
+            <input class='bouton' type='submit' name='submit' value='submit'>
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+            </p>
+
         </form>
     </div>
-    
+    <script>
+        function minMaxvalidationFunc(that,value){
+let min = parseInt(that.getAttribute("min"));
+let max = parseInt(that.getAttribute("max"));
+let val = parseInt(value);
+if(val<min){
+    return min;
+}
+else if(val>max){
+    return max;
+}
+else if(isNaN(val)){
+    return empty;
+}
+else{
+    return val;
+}
+}
+  </script>
+
 </body>
 </html>

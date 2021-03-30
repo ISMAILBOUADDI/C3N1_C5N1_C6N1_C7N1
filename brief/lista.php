@@ -1,27 +1,23 @@
 <?php
 session_start();
-if(!isset($_SESSION["loggedUser"])){
-    header('location:login_handler.php');
-}
 ?>
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>profile</title>
-    <link rel="shortcut icon" href="/assets/favicon.ico">
     <!-- <link rel="stylesheet" href="./src/main.css"> -->
-    <STyle>
+    <style>
        table,tr,th{
            border : 1px solid black;
        }
-    </STyle>
+    </style>
 </head>
 
 <body>
-    <?php
+
+<?php
     include "config.php";
-    $email=$_SESSION["loggedUser"];
     $listdev="SELECT firstName , lastName FROM developers";
     $result = mysqli_query($con,$listdev);
     if(!$result ){
@@ -45,7 +41,9 @@ if(!isset($_SESSION["loggedUser"])){
     </tr>
     <?php endwhile; ?>
     </Table>
-    <a href="skill.php">details of skills</a>
+    <a href="detl.php">details of skills</a>
+
+   
 
    
 </body>
